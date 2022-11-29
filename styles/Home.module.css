@@ -127,3 +127,25 @@
     filter: invert(1);
   }
 }
+
+.makePostUI {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.addButton {
+  margin: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.textField {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
