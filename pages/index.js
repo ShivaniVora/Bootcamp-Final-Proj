@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from 'react';
+import PostCreator from "../components/postCreator";
 
 export default function Home() {
 
@@ -14,26 +15,9 @@ export default function Home() {
 
   return (
     <div className={styles.main}>
-      <div className={styles.makePostUI}>
-        <p>Create a Post</p>
-        <div>
-          <button className={styles.addButton}>{"+"}</button>
-        </div>
-        <div>
-          <div className={styles.textField}>
-            <label>Title: </label>
-            <input></input>
-          </div>
-          <div className={styles.textField}>
-            <label>Image URL: </label>
-            <input></input>
-          </div>
-          <div className={styles.textField}>
-            <label>Content: </label>
-            <textarea>Type post content here...</textarea>
-          </div>
-        </div>
-      </div>
+
+      <PostCreator />
+      
       <div className={styles.main}>
         <h1>Posts</h1>
         {
@@ -44,8 +28,6 @@ export default function Home() {
               </div>
         ))}
       </div>
-      
-      
     </div>
-  )
+    )
 }
