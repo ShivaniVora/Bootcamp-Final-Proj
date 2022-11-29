@@ -24,3 +24,15 @@ a {
     background: black;
   }
 }
+
+textarea {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  width: 400px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+input {
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
