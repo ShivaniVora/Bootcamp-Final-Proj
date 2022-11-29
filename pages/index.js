@@ -7,7 +7,6 @@ export default function Home() {
   const [allPosts, setAllPosts] = useState([]);
 
   useEffect(() => {
-    console.log('api called');
     fetch("/api/posts")
       .then((res) => res.json())
       .then((data) => setAllPosts(data));
@@ -17,7 +16,7 @@ export default function Home() {
     <div className={styles.main}>
 
       <PostCreator />
-      
+
       <div className={styles.main}>
         <h1>Posts</h1>
         {

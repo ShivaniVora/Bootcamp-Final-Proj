@@ -1,29 +1,36 @@
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from 'react';
 
-function PostCreator(props) {
+function PostCreator(props) { 
 
+  const [prompt, setPrompt] = useState('');
   const [npTitle, setNPTitle] = useState('');
   const [npBody, setNPBody] = useState('');
   const [npImage, setNPImage] = useState('');
 
   const createPost = event => {
-    console.log('createPost');
-    event.preventDefault(); // 👈️ prevent page refresh
+    event.preventDefault(); // prevent page refresh
 
     if (npTitle === '' || npBody === '') {
-      console.log('both the body and title must have inputs');
+      setPrompt('Both the body and title must have text!');
     } else {
-      console.log("Title: " + npTitle);
-      console.log("Body: " + npBody);
+      let params = { title:npTitle, body:npBody };
 
       if (npImage !== "") {
-        console.log("theres an image too")
+        params = { title:npTitle, body:npBody, image:npImage };
       }
+
+      fetch("/api/createpost", {
+        method: "POST",
+        body: JSON.stringify(params),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
 
       setNPTitle('');
       setNPBody('');
       setNPImage('');
+      setPrompt('');
     }
   };
 
@@ -70,6 +77,7 @@ function PostCreator(props) {
             />
           </div>
         </div>
+        <h3>{prompt}</h3>
 
       </form>
     </div>

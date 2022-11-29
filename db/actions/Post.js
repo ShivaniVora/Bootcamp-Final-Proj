@@ -12,4 +12,11 @@ async function findAllPosts() {
   return await Post.find({});
 }
 
-export { findAllPosts };
+async function createPost(body) {
+  console.log(typeof(body));
+  console.log(body);
+  await dbConnect();
+  return await Post.create(body);
+}
+
+export { findAllPosts, createPost };
