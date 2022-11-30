@@ -27,7 +27,7 @@ What you need to implement:
 - React Component for Post
 
   - The post page should display the post's title, body, date of creation, and image (if you have added this feature)
-    - TODO: Most of this exists in /posts/id.js, just needs to be migrated
+    - DONE: postPage
   - Later, you will display comments underneath the post
 
 - API Endpoints

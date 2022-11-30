@@ -19,7 +19,7 @@ What you need to implement:
     - Hint: Take a look at the DB models!
     - DONE: /api/posts/linkcomment
   - MOVED FROM TICKET 2: delete all comments connected to a post when post is deleted
-    - IN PROGRESS: /api/comments/delete/all
+    - DONE: /api/comments/deleteall
 
 Acceptance Criteria:
 
