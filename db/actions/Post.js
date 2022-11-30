@@ -39,4 +39,13 @@ async function deletePost(id) {
   }
 }
 
-export { findAllPosts, createPost, findPost, deletePost };
+async function updatePost(query, update) {
+  await dbConnect();
+  try {
+    return await Post.findOneAndUpdate(query, update);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export { findAllPosts, createPost, findPost, deletePost, updatePost };

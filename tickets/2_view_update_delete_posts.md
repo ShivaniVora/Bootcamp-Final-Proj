@@ -13,7 +13,7 @@ What you need to implement:
 - Update
 
   - Allow the user to edit the title and body (and image if you have added this feature)
-    - TODO
+    - IN PROGRESS: endpoint created, but will to implement for editting
   - Optionally, you could add a boolean `edited` key in the schema for Post if you want to display whether or not a post has been edited in the past
     - TODO: probably not worth the trouble of messing with the schema
 
@@ -33,7 +33,7 @@ What you need to implement:
 - API Endpoints
 
   - Updating post by id using new values
-    - TODO
+    - DONE: /api/posts/update => updatePost(id)
   - Delete post by id
     - DONE: /api/posts/delete => deletePost(id)
 
@@ -42,3 +42,4 @@ Acceptance Criteria:
 - Update should only take 1 database call
 - Deleting a post should also delete all the comments under it (it might be difficult to do this in 1 database query - perhaps try 2?)
   - We don't want to store unnecessary data after deleting the post
+    - MOVED: Moved to Ticket 3
