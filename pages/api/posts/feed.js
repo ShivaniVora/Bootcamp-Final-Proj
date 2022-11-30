@@ -1,9 +1,4 @@
-/* 
-  This API endpoint is an example for how to access the database 
-  and call relevant db actions.
- */
-
-import { findAllPosts } from "../../db/actions/Post";
+import { findAllPosts } from "../../../db/actions/Post";
 
 function handler(req, res) {
   getAllPosts(req, res);

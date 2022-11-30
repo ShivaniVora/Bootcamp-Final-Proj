@@ -1,51 +1,38 @@
 import styles from "../styles/Home.module.css";
-import { useState, useEffect } from 'react';
+import PostCreator from "../components/postCreator";
+import Link from "next/link";
 
-export default function Home() {
+export default function Home(props) {
 
-  const [allPosts, setAllPosts] = useState([]);
-
-  useEffect(() => {
-    console.log('api called');
-    fetch("/api/posts")
-      .then((res) => res.json())
-      .then((data) => setAllPosts(data));
-  }, []);
+  const { allPosts } = props;
 
   return (
     <div className={styles.main}>
-      <div className={styles.makePostUI}>
-        <p>Create a Post</p>
-        <div>
-          <button className={styles.addButton}>{"+"}</button>
-        </div>
-        <div>
-          <div className={styles.textField}>
-            <label>Title: </label>
-            <input></input>
-          </div>
-          <div className={styles.textField}>
-            <label>Image URL: </label>
-            <input></input>
-          </div>
-          <div className={styles.textField}>
-            <label>Content: </label>
-            <textarea>Type post content here...</textarea>
-          </div>
-        </div>
-      </div>
+
+      <PostCreator />
+
       <div className={styles.main}>
-        <h1>Posts</h1>
+        <h1>Feed</h1>
         {
-            allPosts.map((post)=> (
-              <div key={post.id}>
+          allPosts.map((post)=> (
+            <div key={post["_id"]}>
+              <Link href={"/posts/" + post["_id"]}>
                 <h3>{post.title}</h3>
-                <p>{post.body}</p>
-              </div>
+              </Link>
+              <p>{post.body}</p>
+            </div>
         ))}
       </div>
-      
-      
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  const res = await fetch("http://localhost:3000/api/posts/feed");
+  const data = await res.json();
+  return {
+    props: {
+      allPosts: data,
+    },
+  };
 }

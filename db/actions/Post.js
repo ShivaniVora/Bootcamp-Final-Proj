@@ -12,4 +12,22 @@ async function findAllPosts() {
   return await Post.find({});
 }
 
-export { findAllPosts };
+async function createPost(body) {
+  await dbConnect();
+  try {
+    return await Post.create(body);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function findPost(id) {
+  await dbConnect();
+  try {
+    return await Post.find({'_id':id});
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export { findAllPosts, createPost, findPost };
