@@ -13,22 +13,29 @@ What you need to implement:
 - Update
 
   - Allow the user to edit the title and body (and image if you have added this feature)
+    - TODO
   - Optionally, you could add a boolean `edited` key in the schema for Post if you want to display whether or not a post has been edited in the past
+    - TODO: probably not worth the trouble of messing with the schema
 
 - Delete
 
   - We don't want to store unnecessary data after deleting the post
+    - DONE: removed from db and feed
   - Deletion should prompt the user for confirmation
+    - TODO
 
 - React Component for Post
 
   - The post page should display the post's title, body, date of creation, and image (if you have added this feature)
+    - TODO 
   - Later, you will display comments underneath the post
 
 - API Endpoints
 
   - Updating post by id using new values
+    - TODO
   - Delete post by id
+    - DONE: /api/posts/delete => deletePost(id)
 
 Acceptance Criteria:
 
