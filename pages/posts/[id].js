@@ -23,12 +23,18 @@ const Post = (props) => {
       <p>Additional Data</p>
       <p>{postData.date}</p>
       <button onClick={() => deletePost(postData["_id"], router)}>Delete</button>
+      <button onClick={() => {
+        let params = { query: { _id: postData["_id"] },
+          update: { title:'Another Title', body:'Body has been changed again' }};
+        updatePost(params, router);
+      }}>Edit Post</button>
     </div>
   );
 };
 
 function deletePost(id, router) {
   const params = { _id: id};
+
   fetch("/api/posts/delete", {
     method: "DELETE",
     body: JSON.stringify(params),
@@ -37,7 +43,16 @@ function deletePost(id, router) {
     .then((data) => {
       console.log(data);
       router.push('/');
-    });
+  });
+}
+
+function updatePost(params, router) {
+  fetch("/api/posts/update", {
+    method: "POST",
+    body: JSON.stringify(params),
+  })
+    .then((res) => res.json())
+    .then((data) => router.push('/posts/' + data["_id"]));
 }
 
 export async function getStaticPaths() {

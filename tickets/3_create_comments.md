@@ -15,6 +15,7 @@ What you need to implement:
     - The comment's content (a String)
   - Additionally, take a moment to think about how you would link a comment to it's post or vice versa?
     - Hint: Take a look at the DB models!
+  - MOVED FROM TICKET 2: delete all comments connected to a post when post is deleted
 
 Acceptance Criteria:
 
