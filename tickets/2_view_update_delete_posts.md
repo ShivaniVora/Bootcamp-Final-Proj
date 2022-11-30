@@ -22,12 +22,12 @@ What you need to implement:
   - We don't want to store unnecessary data after deleting the post
     - DONE: removed from db and feed
   - Deletion should prompt the user for confirmation
-    - TODO
+    - TODO: endpoint is read, just needs this logic
 
 - React Component for Post
 
   - The post page should display the post's title, body, date of creation, and image (if you have added this feature)
-    - TODO 
+    - TODO: Most of this exists in /posts/id.js, just needs to be migrated
   - Later, you will display comments underneath the post
 
 - API Endpoints
