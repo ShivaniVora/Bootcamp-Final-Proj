@@ -18,9 +18,9 @@ What you need to implement:
     - DONE: /api/comments/create => createComment(body)
   - Additionally, take a moment to think about how you would link a comment to it's post or vice versa?
     - Hint: Take a look at the DB models!
-    - TODO: /api/posts/comment
+    - IN PROGRESS: /api/posts/comment
   - MOVED FROM TICKET 2: delete all comments connected to a post when post is deleted
-    - TODO: /api/comments/delete/all
+    - IN PROGRESS: /api/comments/delete/all
 
 Acceptance Criteria:
 
