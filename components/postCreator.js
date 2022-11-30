@@ -8,6 +8,8 @@ function PostCreator(props) {
   const [npTitle, setNPTitle] = useState('');
   const [npBody, setNPBody] = useState('');
   const [npImage, setNPImage] = useState('');
+  const router = useRouter();
+  const [npid, setNPid] = useState(0);
 
   const createPost = event => {
     event.preventDefault(); // prevent page refresh
@@ -16,7 +18,7 @@ function PostCreator(props) {
       setPrompt('Both the body and title must have text!');
     } else {
       let params = { title:npTitle, body:npBody };
-
+      let id = 0;
       if (npImage !== "") {
         params = { title:npTitle, body:npBody, image:npImage };
       }
@@ -27,14 +29,15 @@ function PostCreator(props) {
       })
         .then((res) => res.json())
         .then((data) => {
-          let npId = data.id;
-          console.log(npId);
-        });
+          router.push('/posts/' + data["_id"]);
+      });
 
       setNPTitle('');
       setNPBody('');
       setNPImage('');
       setPrompt('');
+
+      
     }
   };
 
