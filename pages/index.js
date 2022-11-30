@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css";
 import PostCreator from "../components/postCreator";
 import Link from "next/link";
+import CommentCreator from "../components/commentCreator";
 
 export default function Home(props) {
 
@@ -10,6 +11,7 @@ export default function Home(props) {
     <div className={styles.main}>
 
       <PostCreator />
+
 
       <div className={styles.main}>
         <h1>Feed</h1>

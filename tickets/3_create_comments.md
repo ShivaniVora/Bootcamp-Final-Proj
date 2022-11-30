@@ -15,7 +15,7 @@ What you need to implement:
 - API endpoint for comment creation
   - Keep in mind that the user's comments needs to have the following information:
     - The comment's content (a String)
-    - IN PROGRESS: /api/comments/create
+    - DONE: /api/comments/create => createComment(body)
   - Additionally, take a moment to think about how you would link a comment to it's post or vice versa?
     - Hint: Take a look at the DB models!
     - TODO: /api/posts/comment
