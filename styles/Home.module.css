@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+.row {
+  display: flex;
+  flex: 2;
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -19,6 +24,14 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+}
+.postCreate {
+  background-color: azure;
+
+}
+.post {
+  display: flex;
+  flex: 1;
 }
 
 .footer a {

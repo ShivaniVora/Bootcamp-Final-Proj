@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router';
+import PostPage from "../../components/postPage";
 
 const Post = (props) => {
   const { posts } = props;
@@ -17,11 +18,12 @@ const Post = (props) => {
   }
   return (
     <div>
+      <PostPage 
+        title ={postData.title}
+        body ={postData.body}
+        date ={postData.date}
+      />
       <Link href='/'><h3>Return Home</h3></Link>
-      <h1>{postData.title}</h1>
-      <p>{postData.body}</p>
-      <p>Additional Data</p>
-      <p>{postData.date}</p>
       <button onClick={() => deletePost(postData["_id"], router)}>Delete</button>
       <button onClick={() => {
         let params = { query: { _id: postData["_id"] },

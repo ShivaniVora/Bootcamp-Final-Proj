@@ -8,11 +8,10 @@ export default function Home(props) {
   const { allPosts } = props;
 
   return (
-    <div className={styles.main}>
-
-      <PostCreator />
-
-
+    <div className={styles.row}>
+      <div className= {styles.postCreate}>
+          <PostCreator />
+      </div>
       <div className={styles.main}>
         <h1>Feed</h1>
         {
