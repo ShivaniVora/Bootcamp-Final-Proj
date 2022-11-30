@@ -22,6 +22,8 @@ const Post = (props) => {
         title ={postData.title}
         body ={postData.body}
         date ={postData.date}
+        image = {postData.image}
+        comments = {postData.comments}
       />
       <Link href='/'><h3>Return Home</h3></Link>
       <button onClick={() => deletePost(postData["_id"], router)}>Delete</button>
