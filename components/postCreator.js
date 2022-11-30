@@ -8,8 +8,8 @@ function PostCreator(props) {
   const [npTitle, setNPTitle] = useState('');
   const [npBody, setNPBody] = useState('');
   const [npImage, setNPImage] = useState('');
+
   const router = useRouter();
-  const [npid, setNPid] = useState(0);
 
   const createPost = event => {
     event.preventDefault(); // prevent page refresh
@@ -17,8 +17,9 @@ function PostCreator(props) {
     if (npTitle === '' || npBody === '') {
       setPrompt('Both the body and title must have text!');
     } else {
+
       let params = { title:npTitle, body:npBody };
-      let id = 0;
+
       if (npImage !== "") {
         params = { title:npTitle, body:npBody, image:npImage };
       }
@@ -36,8 +37,6 @@ function PostCreator(props) {
       setNPBody('');
       setNPImage('');
       setPrompt('');
-
-      
     }
   };
 
@@ -55,7 +54,6 @@ function PostCreator(props) {
             <label>Title: </label>
             <input
               id="title"
-              name="title"
               type="text"
               onChange={event => setNPTitle(event.target.value)}
               value={npTitle}
@@ -65,8 +63,7 @@ function PostCreator(props) {
           <div className={styles.textField}>
             <label>Image URL: </label>
             <input
-              id="body"
-              name="body"
+              id="image-url"
               type="text"
               value={npImage}
               onChange={event => setNPImage(event.target.value)}
@@ -77,7 +74,6 @@ function PostCreator(props) {
             <label>Content: </label>
             <input
               id="body"
-              name="body"
               type="text"
               value={npBody}
               onChange={event => setNPBody(event.target.value)}
@@ -91,8 +87,4 @@ function PostCreator(props) {
   );
 }
 
-
-
-
-  
 export default PostCreator;

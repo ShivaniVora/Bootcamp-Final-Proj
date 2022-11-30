@@ -24,7 +24,6 @@ async function createPost(body) {
 async function findPost(id) {
   await dbConnect();
   try {
-    console.log("db");
     return await Post.find({'_id':id});
   } catch (err) {
     console.log(err);

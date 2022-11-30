@@ -1,17 +1,10 @@
 import styles from "../styles/Home.module.css";
-import { useState, useEffect } from 'react';
 import PostCreator from "../components/postCreator";
 import Link from "next/link";
 
-export default function Home() {
+export default function Home(props) {
 
-  const [allPosts, setAllPosts] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/posts/feed")
-      .then((res) => res.json())
-      .then((data) => setAllPosts(data));
-  }, []);
+  const { allPosts } = props;
 
   return (
     <div className={styles.main}>
@@ -19,7 +12,7 @@ export default function Home() {
       <PostCreator />
 
       <div className={styles.main}>
-        <h1>Posts</h1>
+        <h1>Feed</h1>
         {
           allPosts.map((post)=> (
             <div key={post["_id"]}>
@@ -32,4 +25,14 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  const res = await fetch("http://localhost:3000/api/posts/feed");
+  const data = await res.json();
+  return {
+    props: {
+      allPosts: data,
+    },
+  };
 }
