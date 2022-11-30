@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Post = () => {
   const router = useRouter();
-  console.log("component level");
   const { id } = router.query;
-  console.log(id);
   const [postData, setPostData] = useState({});
 
   useEffect(() => {
@@ -16,10 +15,16 @@ const Post = () => {
   }, [id]);
 
   if (!postData["_id"]) {
-    return <div>No Post was Found with This ID</div>;
+    return (
+      <div>
+        <Link href='/'><h3>Return Home</h3></Link>
+        <p>No post was found with this id.</p>
+      </div>
+    );
   }
   return (
     <div>
+      <Link href='/'><h3>Return Home</h3></Link>
       <h1>{postData.title}</h1>
       <p>{postData.body}</p>
       <p>Additional Data</p>
