@@ -45,11 +45,7 @@ function PostCreator(props) {
       <form onSubmit={createPost}>
 
         <h1>Create Post</h1>
-        <div>
-          <button className={styles.addButton} type="submit">{"+"}</button>
-        </div>
-
-        <div>
+        <div style={{ display: 'flex', flexDirection : 'column', alignContent: 'centers' }}>
           <div className={styles.textField} id='image'>
             <label>Title: </label>
             <input
@@ -79,6 +75,7 @@ function PostCreator(props) {
               onChange={event => setNPBody(event.target.value)}
             />
           </div>
+          <button className={styles.addButton} type="submit">{"Post New Content"}</button>
         </div>
         <h3>{prompt}</h3>
 

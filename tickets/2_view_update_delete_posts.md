@@ -22,7 +22,7 @@ What you need to implement:
   - We don't want to store unnecessary data after deleting the post
     - DONE: removed from db and feed
   - Deletion should prompt the user for confirmation
-    - TODO: endpoint is read, just needs this logic
+    - TODO: endpoint is ready, just needs this logic
 
 - React Component for Post
 

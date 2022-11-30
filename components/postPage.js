@@ -15,21 +15,19 @@ const PostPage = (props) => {
     return(<div className = {styles.row}>
     <div className= {styles.postCreate}>
           <PostCreator />
+          <CommentCreator />
       </div>
       <div className = {styles.post}>
       <h1>{title}</h1>
       <p>{body}</p>
-      <img 
-      src={image}
-      alt="new"
-      />
+      <img src={image} alt="No Image"/>
       <p>Date: {date} </p>
       <div className="Comments">
       <h1> comments </h1>
       {comments.map(txt => <p>{txt}</p>)}
       </div>
       
-      <CommentCreator/>
+      
       </div>
     </div>)
 }

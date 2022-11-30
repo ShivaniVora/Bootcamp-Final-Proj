@@ -46,11 +46,8 @@ function CommentCreator(props) {
       <form onSubmit={createComment}>
 
         <h1>Add Comment</h1>
-        <div>
-          <button className={styles.addButton} type="submit">{"+"}</button>
-        </div>
 
-        <div>
+        <div style={{ display: 'flex', flexDirection : 'column', alignContent: 'centers' }}>
           <div className={styles.textField} id='image'>
             <label>Title: </label>
             <input
@@ -60,6 +57,7 @@ function CommentCreator(props) {
               value={npComment}
             />
           </div>
+            <button className={styles.addButton} type="submit">{"Post Comment"}</button>
         </div>
         <h3>{prompt}</h3>
 
