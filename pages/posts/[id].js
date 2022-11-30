@@ -26,7 +26,7 @@ const Post = (props) => {
         comments = {postData.comments}
       />
       <Link href='/'><h3>Return Home</h3></Link>
-      <button onClick={() => deletePost(postData["_id"], router)}>Delete</button>
+      <button onClick={() => deletePost(postData["_id"], postData["comments"], router)}>Delete</button>
       <button onClick={() => {
         let params = { query: { _id: postData["_id"] },
           update: { title:'Another Title', body:'Body has been changed again' }};
@@ -36,18 +36,26 @@ const Post = (props) => {
   );
 };
 
-function deletePost(id, router) {
+function deletePost(id, cids, router) {
   const params = { _id: id};
+  
+  const cparams = { _id: { $in: cids } };
+  console.log(cparams);
+  fetch("/api/comments/deleteall", {
+    method: "DELETE",
+    body: JSON.stringify(cparams),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+  });
 
   fetch("/api/posts/delete", {
     method: "DELETE",
     body: JSON.stringify(params),
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      router.push('/');
-  });
+    .then(() => router.push('/'));
 }
 
 function updatePost(params, router) {
