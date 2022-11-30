@@ -12,4 +12,13 @@ async function createComment(body) {
   }
 }
 
-export { findCommentsByPost, createComment };
+async function deleteComments(body) {
+  await dbConnect();
+  try {
+    return await Comment.deleteMany(body);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export { findCommentsByPost, createComment, deleteComments };
