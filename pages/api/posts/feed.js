@@ -3,7 +3,7 @@
   and call relevant db actions.
  */
 
-import { findAllPosts } from "../../db/actions/Post";
+import { findAllPosts } from "../../../db/actions/Post";
 
 function handler(req, res) {
   getAllPosts(req, res);

@@ -13,10 +13,22 @@ async function findAllPosts() {
 }
 
 async function createPost(body) {
-  console.log(typeof(body));
-  console.log(body);
   await dbConnect();
-  return await Post.create(body);
+  try {
+    return await Post.create(body);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-export { findAllPosts, createPost };
+async function findPost(id) {
+  await dbConnect();
+  try {
+    console.log("db");
+    return await Post.find({'_id':id});
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export { findAllPosts, createPost, findPost };

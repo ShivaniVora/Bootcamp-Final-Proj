@@ -1,4 +1,4 @@
-import { createPost } from "../../db/actions/Post";
+import { createPost } from "../../../db/actions/Post";
 
 function handler(req, res) {
   createNewPost(req, res);

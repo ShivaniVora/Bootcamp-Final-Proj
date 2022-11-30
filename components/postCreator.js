@@ -1,5 +1,6 @@
 import styles from "../styles/Home.module.css";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 function PostCreator(props) { 
 
@@ -20,12 +21,15 @@ function PostCreator(props) {
         params = { title:npTitle, body:npBody, image:npImage };
       }
 
-      fetch("/api/createpost", {
+      fetch("/api/posts/create", {
         method: "POST",
         body: JSON.stringify(params),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          let npId = data.id;
+          console.log(npId);
+        });
 
       setNPTitle('');
       setNPBody('');
