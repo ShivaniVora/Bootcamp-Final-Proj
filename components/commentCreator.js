@@ -2,7 +2,9 @@ import styles from "../styles/Home.module.css";
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-function CommentCreator(props) { 
+function CommentCreator(props) {
+
+  const { postid } = props;
 
   const [prompt, setPrompt] = useState('');
   const [npComment, setNPComment] = useState('');
@@ -25,6 +27,11 @@ function CommentCreator(props) {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          let params = { 
+            query: { _id: postid },
+            update: { $push: { comments: data["_id"] }}
+          };
+          linkPost(params);
           // since it is server side rendered we must reroute to the page to refresh the render
           //router.push('/posts/' + data["_id"]);
       });
@@ -59,6 +66,15 @@ function CommentCreator(props) {
       </form>
     </div>
   );
+}
+
+function linkPost(params, router) {
+  fetch("/api/posts/linkcomment", {
+    method: "POST",
+    body: JSON.stringify(params),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 }
 
 export default CommentCreator;

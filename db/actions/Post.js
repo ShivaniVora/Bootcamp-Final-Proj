@@ -48,4 +48,13 @@ async function updatePost(query, update) {
   }
 }
 
-export { findAllPosts, createPost, findPost, deletePost, updatePost };
+async function linkComment(query, update) {
+  await dbConnect();
+  try {
+    return await Post.findOneAndUpdate(query, update);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export { findAllPosts, createPost, findPost, deletePost, updatePost, linkComment };

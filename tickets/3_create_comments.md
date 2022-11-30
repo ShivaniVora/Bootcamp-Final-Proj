@@ -5,12 +5,11 @@ Context: Our users really want to leave comments like how much they love Georgia
 What you need to implement:
 
 - Ability to create a comment that is associated with a post
-  - TODO: connect comment to post via post api
+  - DONE: /api/posts/linkcomment.js
 - Create modal/form/whatever design you want so that a user can create the comment on a post!
-
   - Keep in mind that this comment need to be associated with exactly 1 post, so we need to add functionality to create comments under posts
   - This ticket does not concern the actual display of comments under a post (once it's created), just the process by which you create it
-  - TODO: same api as above
+  - DONE: /api/comments/create.js
 
 - API endpoint for comment creation
   - Keep in mind that the user's comments needs to have the following information:
@@ -18,7 +17,7 @@ What you need to implement:
     - DONE: /api/comments/create => createComment(body)
   - Additionally, take a moment to think about how you would link a comment to it's post or vice versa?
     - Hint: Take a look at the DB models!
-    - IN PROGRESS: /api/posts/comment
+    - DONE: /api/posts/linkcomment
   - MOVED FROM TICKET 2: delete all comments connected to a post when post is deleted
     - IN PROGRESS: /api/comments/delete/all
 
