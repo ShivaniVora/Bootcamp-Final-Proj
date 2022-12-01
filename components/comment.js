@@ -6,10 +6,10 @@ const Comment = (props) => {
   const date = props.date;
   console.log(body);
   return(
-    <div className = {styles.row}>
-            <p>{body} {date}</p>
-
-        </div>
+    <div className = {styles.dateComment}>
+            <p>{body} </p>
+            <p> {date}</p>
+    </div>
 
     )
 }

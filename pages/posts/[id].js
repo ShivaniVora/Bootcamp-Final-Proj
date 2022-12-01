@@ -16,7 +16,7 @@ const Post = (props) => {
 
   if (!postData["_id"]) {
     return (
-      <div>
+      <div className = {styles.postHeader}>
         <Link href='/'><h3>Return Home</h3></Link>
         <p>No post was found with this id.</p>
       </div>
@@ -24,7 +24,7 @@ const Post = (props) => {
   }
   return (
     <div>
-      <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+      <div className = {styles.postHeader} style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
       <div className = {styles.homeButton}>
       <Link href='/'><h3>{"Return Home"}</h3></Link>
       </div>

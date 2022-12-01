@@ -34,29 +34,26 @@ const PostPage = (props) => {
         <CommentCreator postid={postid} setComments = {setComments} comments = {comments} />
       </div>
       
-      <div className={styles.alignPost}>
       <div className = {styles.post}>
+        <div>
         <h1>{title}</h1>
         <p>{body}</p>
         {image !== undefined && <img src={image} alt="No Image"/>}
         <p>Date: {date} </p>
+        </div>
         <div className="Comments">
           <h2 style = {{display: "flex", flexDirection: "row", justifyContent: "center"}}> Comments </h2>
           {
             visuals.map((comment) =>
             <div key={comment["_id"]}>
-              <div>
                 <Comment 
                 body = {comment.body}
                 date = {comment.date}
                 />
-              </div>
             </div>
           )}
-          
         </div>
         </div>
-      </div>
 
     </div>)
 }
