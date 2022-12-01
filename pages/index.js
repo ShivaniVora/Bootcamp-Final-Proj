@@ -36,16 +36,18 @@ export default function Home(props) {
         {
           feed.map((post)=> (
           <div className = {styles.allPosts}>
+              <Link href={"/posts/" + post["_id"]}>
               <div key={post["_id"]}>
-                <Link href={"/posts/" + post["_id"]}>
+                
                   <h3>{post.title}</h3>
-                </Link>
+              
                 <p>{post.body}</p>
                 <div className={styles.dateComment}>
                 <p>{post.comments.length} Comments </p>
                 <p>{post.date} </p>
                 </div>
               </div>
+              </Link>
             </div>
         ))}
         <div className={styles.row}>
