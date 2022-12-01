@@ -37,7 +37,6 @@ const Post = (props) => {
           if (clicks < 1) {
             addClick(clicks + 1);
           }
-          console.log(clicks);
         }}
       >
         Delete
