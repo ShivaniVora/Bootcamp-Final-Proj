@@ -9,11 +9,12 @@ const PostPage = (props) => {
   const body = props.body;
   const date = props.date;
   const image = props.image;
-  const comments = props.comments;
+  //const comments = props.comments;
   const postid = props.postid;
-  console.log(image);
 
+  const [comments, setComments] = useState(props.comments);
   const [visuals, setVisuals] = useState([]);
+  const [commentList, setCommentList] = useState(props.comments);
 
   useEffect(() => {
     const params = { _id: { $in: comments}}
@@ -23,14 +24,14 @@ const PostPage = (props) => {
       })
       .then((res) => res.json())
       .then((data) => setVisuals(data));
-  }, []);
+  }, [comments]);
 
   return(
     <div className = {styles.row}>
 
       <div className= {styles.postCreate}>
         <PostCreator />
-        <CommentCreator postid={postid} />
+        <CommentCreator postid={postid} setComments = {setComments} comments = {comments} />
       </div>
       
       <div className={styles.alignPost}>
@@ -40,7 +41,7 @@ const PostPage = (props) => {
         {image !== undefined && <img src={image} alt="No Image"/>}
         <p>Date: {date} </p>
         <div className="Comments">
-          <h2> comments </h2>
+          <h2 style = {{display: "flex", flexDirection: "row", justifyContent: "center"}}> Comments </h2>
           {
             visuals.map((comment) =>
             <div key={comment["_id"]}>
@@ -49,10 +50,10 @@ const PostPage = (props) => {
                 body = {comment.body}
                 date = {comment.date}
                 />
-                {/* <p>{comment.body}</p> */}
               </div>
             </div>
           )}
+          
         </div>
         </div>
       </div>

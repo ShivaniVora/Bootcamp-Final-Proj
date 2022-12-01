@@ -4,10 +4,12 @@ import { useRouter } from 'next/router';
 
 function CommentCreator(props) {
 
-  const { postid } = props;
+  const { postid, setComments, comments } = props;
 
   const [prompt, setPrompt] = useState('');
   const [npComment, setNPComment] = useState('');
+  const [commentList, setCommentList] = useState(props.comments);
+  console.log(props.comments);
 
   const router = useRouter();
 
@@ -34,8 +36,10 @@ function CommentCreator(props) {
           linkPost(params);
           // since it is server side rendered we must reroute to the page to refresh the render
           //router.push('/posts/' + data["_id"]);
+          {setComments([...comments, data])}
       });
 
+      
       setNPComment('');
       setPrompt('');
     }
