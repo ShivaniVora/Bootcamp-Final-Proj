@@ -30,6 +30,7 @@ const PostPage = (props) => {
         <CommentCreator />
       </div>
       
+      <div className={styles.alignPost}>
       <div className = {styles.post}>
         <h1>{title}</h1>
         <p>{body}</p>
@@ -45,6 +46,7 @@ const PostPage = (props) => {
               </div>
             </div>
           )}
+        </div>
         </div>
       </div>
 

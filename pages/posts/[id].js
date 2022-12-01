@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import PostPage from "../../components/postPage";
 import { useState } from "react";
+import styles from "../../styles/Home.module.css";
 import PostEditor from "../../components/postEditor";
 
 const Post = (props) => {
@@ -22,6 +23,34 @@ const Post = (props) => {
   }
   return (
     <div>
+      <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+      <div className = {styles.homeButton}>
+      <Link href='/'><h3>{"Return Home"}</h3></Link>
+      </div>
+      <div className = {styles.buttons}>
+      <button className = {styles.delete} onClick={() => {
+      if(clicks == 2) {
+          addClick(0);
+          deletePost(postData["_id"], router)
+        }
+        if(clicks < 1)
+          {addClick(clicks + 1)}
+        console.log(clicks)}}
+      >Delete</button>
+      
+      {clicks == 1 &&
+        <div>
+       <button className = {styles.delete} onClick={() => {
+          addClick(0),
+          deletePost(postData["_id"], router)
+        }} >Press to Confirm Delete</button>
+       <button className = {styles.delete} onClick={() => {
+          addClick(0) }}
+       >Cancel</button>
+        </div>} 
+      
+      <button className = {styles.delete} onClick={() => {setEdit(1);}}>Edit Post</button>
+    </div>
 
       {edit == 0 &&
       <div>
@@ -44,31 +73,8 @@ const Post = (props) => {
           setEdit={setEdit}
          />
       </div>} 
-
-      <Link href='/'><h3>Return Home</h3></Link>
-      <button onClick={() => {
-        if(clicks == 2) {
-          addClick(0);
-          deletePost(postData["_id"], router)
-        }
-        if(clicks < 1)
-          {addClick(clicks + 1)}
-        console.log(clicks)}}
-      >Delete</button>
-      
-      {clicks == 1 &&
-        <div>
-       <button onClick={() => {
-          addClick(0),
-          deletePost(postData["_id"], router)
-        }} >Press to Confirm Delete</button>
-       <button onClick={() => {
-          addClick(0) }}
-       >Cancel</button>
-        </div>} 
-      
-      <button onClick={() => {setEdit(1);}}>Edit Post</button>
-    </div>
+      </div>
+      </div>
   );
 };
 
