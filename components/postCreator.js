@@ -9,6 +9,8 @@ function PostCreator(props) {
   const [npBody, setNPBody] = useState('');
   const [npImage, setNPImage] = useState('');
 
+  const {image, setImage} = {props};
+
   const router = useRouter();
 
   const createPost = event => {
@@ -31,7 +33,9 @@ function PostCreator(props) {
         .then((res) => res.json())
         .then((data) => {
           router.push('/posts/' + data["_id"]);
+          setImage(data.image);
       });
+      
 
       setNPTitle('');
       setNPBody('');
