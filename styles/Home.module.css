@@ -105,6 +105,8 @@
   border-radius: 10px;
 }
 
+.delete:hover {background-color: grey;}
+
 .buttons {
   display: flex;
   padding: 20px;
