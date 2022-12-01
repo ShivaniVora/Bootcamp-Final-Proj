@@ -12,6 +12,13 @@ async function findAllPosts(skip, limit) {
   return await Post.find({}).sort({date: 'desc'}).skip(skip).limit(limit);
 }
 
+async function countPosts() {
+  await dbConnect();
+  let ris = await Post.find({}).count();
+  console.log(ris);
+  return ris;
+}
+
 async function createPost(body) {
   await dbConnect();
   try {
@@ -57,4 +64,4 @@ async function linkComment(query, update) {
   }
 }
 
-export { findAllPosts, createPost, findPost, deletePost, updatePost, linkComment };
+export { findAllPosts, createPost, findPost, deletePost, updatePost, linkComment, countPosts };
