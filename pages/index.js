@@ -32,7 +32,7 @@ export default function Home(props) {
           <PostCreator />
       </div>
       <div className={styles.main}>
-        <h1>Feed</h1>
+        <h1>SnapCat!</h1>
         {
           feed.map((post)=> (
           <div className = {styles.allPosts}>
