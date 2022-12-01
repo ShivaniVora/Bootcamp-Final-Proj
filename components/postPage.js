@@ -29,7 +29,6 @@ const PostPage = (props) => {
     <div className = {styles.row}>
 
       <div className= {styles.postCreate}>
-        <PostCreator />
         <CommentCreator postid={postid} setComments = {setComments} comments = {comments} />
       </div>
       
