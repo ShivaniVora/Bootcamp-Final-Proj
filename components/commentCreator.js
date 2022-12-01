@@ -62,7 +62,7 @@ function CommentCreator(props) {
               value={npComment}
             />
           </div>
-            <button className={styles.addButton} type="submit">{"Post Comment"}</button>
+            <button className={styles.delete} type="submit">{"Post Comment"}</button>
         </div>
         <h3>{prompt}</h3>
 
