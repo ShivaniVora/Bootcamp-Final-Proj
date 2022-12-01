@@ -31,7 +31,7 @@ export default function Home(props) {
         <h1>Feed</h1>
         {
           feed.map((post)=> (
-          <div classname = {styles.postmargin}>
+          <div className = {styles.allPosts}>
               <div key={post["_id"]}>
                 <Link href={"/posts/" + post["_id"]}>
                   <h3>{post.title}</h3>
