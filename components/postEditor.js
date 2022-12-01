@@ -35,7 +35,7 @@ function PostEditor(props) {
       setNPBody('');
       setNPImage('');
       setPrompt('');
-      setPostData({_id: postId, title: npTitle, image: npImage, body: npBody});
+      setPostData({_id: postId, title: npTitle, image: npImage, body: npBody, comments: postData.comments});
     }
   };
 
