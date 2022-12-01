@@ -70,7 +70,6 @@ export default function Home(props) {
         </div>
         <div>{prompt}</div>
         <div><h3>Explore more Posts!</h3></div>
-        <div><h3>{startFeed}</h3></div>
         </div>
       
     </div>
