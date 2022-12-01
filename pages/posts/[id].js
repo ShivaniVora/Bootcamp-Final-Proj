@@ -1,11 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from 'next/router';
+import { useState } from "react";
 
 const Post = (props) => {
   const { posts } = props;
   const postData = posts[0];
   const router = useRouter();
+  const [clicks, addClick] = useState(0);
 
   if (!postData["_id"]) {
     return (
@@ -22,7 +24,27 @@ const Post = (props) => {
       <p>{postData.body}</p>
       <p>Additional Data</p>
       <p>{postData.date}</p>
-      <button onClick={() => deletePost(postData["_id"], router)}>Delete</button>
+      <button onClick={() => {
+        if(clicks == 2) {
+          addClick(0);
+          deletePost(postData["_id"], router)
+        }
+        if(clicks < 1)
+          {addClick(clicks + 1)}
+        console.log(clicks)}}
+      >Delete</button>
+      
+      {clicks == 1 &&
+        <div>
+       <button onClick={() => {
+          addClick(0),
+          deletePost(postData["_id"], router)
+        }} >Press to Confirm Delete</button>
+       <button onClick={() => {
+          addClick(0) }}
+       >Cancel</button>
+        </div>} 
+      
       <button onClick={() => {
         let params = { query: { _id: postData["_id"] },
           update: { title:'Another Title', body:'Body has been changed again' }};
@@ -45,6 +67,7 @@ function deletePost(id, router) {
       router.push('/');
   });
 }
+
 
 function updatePost(params, router) {
   fetch("/api/posts/update", {

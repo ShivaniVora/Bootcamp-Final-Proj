@@ -149,3 +149,7 @@
   flex-direction: row;
   margin: 10px;
 }
+
+.alert {
+  display: none;
+}
