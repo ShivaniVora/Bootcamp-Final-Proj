@@ -38,6 +38,7 @@ const Post = (props) => {
         console.log(clicks)}}
       >Delete</button>
       
+      
       {clicks == 1 &&
         <div>
        <button className = {styles.delete} onClick={() => {
@@ -50,6 +51,7 @@ const Post = (props) => {
         </div>} 
       
       <button className = {styles.delete} onClick={() => {setEdit(1);}}>Edit Post</button>
+      </div>
     </div>
 
       {edit == 0 &&
@@ -73,7 +75,6 @@ const Post = (props) => {
           setEdit={setEdit}
          />
       </div>} 
-      </div>
       </div>
   );
 };
