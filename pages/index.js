@@ -51,7 +51,7 @@ export default function Home(props) {
             </div>
         ))}
         <div className={styles.row}>
-          <button onClick={() => {
+          <button className = {styles.delete} onClick={() => {
             if (startFeed - pageLimit < 0) {
               setPrompt("There are no more recent posts.");
             } else {
@@ -59,7 +59,7 @@ export default function Home(props) {
               setStartFeed(startFeed - pageLimit);
             }
           }}>{"<"}</button>
-          <button onClick={() => {
+          <button className = {styles.delete} onClick={() => {
             if (startFeed + pageLimit < postCount) {
               setPrompt("");
               setStartFeed(startFeed + pageLimit);

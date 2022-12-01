@@ -9,7 +9,6 @@ function PostCreator(props) {
   const [npBody, setNPBody] = useState('');
   const [npImage, setNPImage] = useState('');
 
-  const {image, setImage} = {props};
 
   const router = useRouter();
 
@@ -33,7 +32,6 @@ function PostCreator(props) {
         .then((res) => res.json())
         .then((data) => {
           router.push('/posts/' + data["_id"]);
-          setImage(data.image);
       });
       
 
@@ -80,7 +78,7 @@ function PostCreator(props) {
               onChange={event => setNPBody(event.target.value)}
             />
           </div>
-          <button className={styles.addButton} type="submit">{"Post New Content"}</button>
+          <button className={styles.delete} type="submit">{"Post New Content"}</button>
         </div>
         <h3>{prompt}</h3>
 
