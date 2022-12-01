@@ -35,6 +35,16 @@
 
 }
 
+.allPosts a:hover {
+  display: inline-block;
+  flex-wrap:wrap; 
+  width: 100%;
+  border: 1px solid green;
+  margin: 2px;
+  padding: 5px;
+  background-color: rgb(204, 226, 176);
+}
+
 .allPosts {
   display: inline-block;
   flex-wrap:wrap; 
@@ -68,7 +78,7 @@
   padding-left: 30px;
 }
 
-.postHeader{
+.header{
   background-color:rgb(204, 226, 176);
 }
 .footer a {

@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 
 function PostEditor(props) { 
 
-  const { postId, postTitle, postImage, postBody, setEdit } = props;
+  const { postId, postTitle, postImage, postBody, setEdit, setPostData, postData } = props;
 
   const [prompt, setPrompt] = useState('');
-  const [npTitle, setNPTitle] = useState(postTitle);
-  const [npBody, setNPBody] = useState(postBody);
-  const [npImage, setNPImage] = useState(postImage);
+  const [npTitle, setNPTitle] = useState(postData.title);
+  const [npBody, setNPBody] = useState(postData.body);
+  const [npImage, setNPImage] = useState(postData.image);
 
   const router = useRouter();
 
@@ -35,13 +35,13 @@ function PostEditor(props) {
       setNPBody('');
       setNPImage('');
       setPrompt('');
+      setPostData({_id: postId, title: npTitle, image: npImage, body: npBody, comments: postData.comments, date: postData.date});
     }
   };
 
   return (
     <div className={styles.makePostUI}>
       <form onSubmit={updatePost}>
-
         <h1 style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>Edit Post</h1>
         <div style={{ display: 'flex', flexDirection : 'column', justifyContent: 'center' }}>
           <div className={styles.textField}>
