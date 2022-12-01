@@ -7,12 +7,16 @@ const pageLimit = 10;
 
 export default function Home(props) {
 
+  const [postCount, setCount] = useState(0);
   const [startFeed, setStartFeed] = useState(0);
   const [feed, setFeed] = useState([]);
   const [prompt, setPrompt] = useState("");
 
   useEffect(() => {
-    console.log(startFeed);
+    fetch("http://localhost:3000/api/posts/count")
+      .then((res) => res.json())
+      .then((data) => setCount(data));
+
     let params = { skip:startFeed, limit:pageLimit }
     fetch("/api/posts/feed", {
       method: "POST",
@@ -41,15 +45,19 @@ export default function Home(props) {
         <div className={styles.row}>
           <button onClick={() => {
             if (startFeed - pageLimit < 0) {
-              setPrompt("There are no earlier posts.");
+              setPrompt("There are no more recent posts.");
             } else {
               setPrompt("");
               setStartFeed(startFeed - pageLimit);
             }
           }}>{"<"}</button>
           <button onClick={() => {
-            setPrompt("");
-            setStartFeed(startFeed + pageLimit);
+            if (startFeed + pageLimit < postCount) {
+              setPrompt("");
+              setStartFeed(startFeed + pageLimit);
+            } else {
+              setPrompt("There are no earlier posts.");
+            }
           }}>{">"}</button>
         </div>
         <div>{prompt}</div>
@@ -59,19 +67,4 @@ export default function Home(props) {
       
     </div>
   )
-}
-
-export async function getServerSideProps() {
-  let params = { skip:0, limit:pageLimit }
-  let res = await fetch("http://localhost:3000/api/posts/feed", {
-      method: "POST",
-      body: JSON.stringify(params),
-  });
-  // const res = await fetch("http://localhost:3000/api/posts/feed");
-  const data = await res.json();
-  return {
-    props: {
-      allPosts: data,
-    },
-  };
 }
