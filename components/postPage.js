@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CommentCreator from "./commentCreator";
 import PostCreator from "./postCreator";
 import styles from "../styles/Home.module.css";
+import Comment from "./comment";
 
 const PostPage = (props) => {
   const title = props.title;
@@ -44,7 +45,11 @@ const PostPage = (props) => {
             visuals.map((comment) =>
             <div key={comment["_id"]}>
               <div>
-                <p>{comment.body}</p>
+                <Comment 
+                body = {comment.body}
+                date = {comment.date}
+                />
+                {/* <p>{comment.body}</p> */}
               </div>
             </div>
           )}

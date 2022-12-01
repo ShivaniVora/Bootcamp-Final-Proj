@@ -9,7 +9,9 @@ Blockers:
 What you need to implement:
 
 - A react component that holds the comment and time the comment was made
+- DONE!
 - API requests to get post information should be modified to sort the post's comments by most recent to least recent
+- DONE!
 
 Acceptance Criteria:
 
