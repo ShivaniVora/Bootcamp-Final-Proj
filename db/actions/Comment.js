@@ -4,7 +4,7 @@ import dbConnect from "../dbConnect";
 async function findCommentsByPost(body) {
   await dbConnect();
   try {
-    return await Comment.find(body); //.sort({date: 'desc'});
+    return await Comment.find(body).sort({date: 'desc'});
   } catch (err) {
     console.log(err);
   }

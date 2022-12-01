@@ -9,7 +9,7 @@ import dbConnect from "../dbConnect";
 
 async function findAllPosts() {
   await dbConnect();
-  return await Post.find({});
+  return await Post.find({}).sort({date: 'desc'});
 }
 
 async function createPost(body) {
