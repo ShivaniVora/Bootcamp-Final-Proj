@@ -28,10 +28,6 @@ const Post = (props) => {
         comments = {postData.comments}
       />
       <Link href='/'><h3>Return Home</h3></Link>
-      <h1>{postData.title}</h1>
-      <p>{postData.body}</p>
-      <p>Additional Data</p>
-      <p>{postData.date}</p>
       <button onClick={() => {
         if(clicks == 2) {
           addClick(0);
