@@ -44,7 +44,7 @@ function PostCreator(props) {
     <div className={styles.makePostUI}>
       <form onSubmit={createPost}>
 
-        <h1>Create Post</h1>
+        <h1 style = {{paddingLeft: 20}}>Create Post</h1>
         <div className={styles.createPost}>
           <div className={styles.textField} id='image'>
             <label>Title: </label>

@@ -47,7 +47,7 @@ function CommentCreator(props) {
 
         <h1>Add Comment</h1>
 
-        <div style={{ display: 'flex', flexDirection : 'column', alignContent: 'centers' }}>
+        <div className={styles.createPost}>
           <div className={styles.textField} id='image'>
             <label>Title: </label>
             <input
