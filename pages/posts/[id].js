@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import PostPage from "../../components/postPage";
 import { useState } from "react";
+import styles from "../../styles/Home.module.css";
+import { getDisplayName } from "next/dist/shared/lib/utils";
 
 const Post = (props) => {
   const { posts } = props;
@@ -20,15 +22,12 @@ const Post = (props) => {
   }
   return (
     <div>
-      <PostPage 
-        title ={postData.title}
-        body ={postData.body}
-        date ={postData.date}
-        image = {postData.image}
-        comments = {postData.comments}
-      />
-      <Link href='/'><h3>Return Home</h3></Link>
-      <button onClick={() => {
+      <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+      <div className = {styles.homeButton}>
+      <Link href='/'><h3>{"Return Home"}</h3></Link>
+      </div>
+      <div className = {styles.buttons}>
+      <button className = {styles.delete} onClick={() => {
         if(clicks == 2) {
           addClick(0);
           deletePost(postData["_id"], router)
@@ -40,20 +39,29 @@ const Post = (props) => {
       
       {clicks == 1 &&
         <div>
-       <button onClick={() => {
+       <button className = {styles.delete} onClick={() => {
           addClick(0),
           deletePost(postData["_id"], router)
         }} >Press to Confirm Delete</button>
-       <button onClick={() => {
+       <button className = {styles.delete} onClick={() => {
           addClick(0) }}
        >Cancel</button>
         </div>} 
       
-      <button onClick={() => {
+      <button className = {styles.delete} onClick={() => {
         let params = { query: { _id: postData["_id"] },
           update: { title:'Another Title', body:'Body has been changed again' }};
         updatePost(params, router);
       }}>Edit Post</button>
+    </div>
+    </div>
+      <PostPage 
+        title ={postData.title}
+        body ={postData.body}
+        date ={postData.date}
+        image = {postData.image}
+        comments = {postData.comments}
+      />
     </div>
   );
 };

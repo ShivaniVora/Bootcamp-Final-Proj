@@ -14,7 +14,7 @@
 
 .row {
   display: flex;
-  flex: 2;
+  flex-direction: row;
 }
 
 .footer {
@@ -26,14 +26,17 @@
   align-items: center;
 }
 .postCreate {
-  background-color: azure;
-
+  background-color:lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .post {
   display: flex;
   flex-direction: column ;
   align-items: center;
-  
+  background-color:aliceblue;
+  padding: 20px;
 }
 
 .footer a {
@@ -41,6 +44,29 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.homeButton {
+  padding-top: 10px;
+  padding-left: 30px;
+
+}
+
+.delete {
+  margin: 10px;
+  font-size: large;
+}
+
+.buttons {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+
+.alignPost {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .title a {
@@ -145,8 +171,9 @@
 
 .makePostUI {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  align-content: center;
 }
 
 .addButton {
@@ -157,6 +184,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 20px;
 }
 
 .textField {
@@ -165,6 +193,10 @@
   margin: 10px;
 }
 
-.alert {
-  display: none;
+.createPost {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  font-weight: bold;
+  padding: 20px;
 }
