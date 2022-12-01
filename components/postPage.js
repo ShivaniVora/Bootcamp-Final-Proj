@@ -9,6 +9,7 @@ const PostPage = (props) => {
   const date = props.date;
   const image = props.image;
   const comments = props.comments;
+  const postid = props.postid;
 
   const [visuals, setVisuals] = useState([]);
 
@@ -27,7 +28,7 @@ const PostPage = (props) => {
 
       <div className= {styles.postCreate}>
         <PostCreator />
-        <CommentCreator />
+        <CommentCreator postid={postid} />
       </div>
       
       <div className={styles.alignPost}>

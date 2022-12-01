@@ -62,6 +62,7 @@ const Post = (props) => {
           date ={postData.date}
           image = {postData.image}
           comments = {postData.comments}
+          postid={postData._id}
         />
       </div>} 
 
