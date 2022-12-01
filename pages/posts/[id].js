@@ -4,13 +4,14 @@ import { useRouter } from 'next/router';
 import PostPage from "../../components/postPage";
 import { useState } from "react";
 import styles from "../../styles/Home.module.css";
-import { getDisplayName } from "next/dist/shared/lib/utils";
+import PostEditor from "../../components/postEditor";
 
 const Post = (props) => {
   const { posts } = props;
   const postData = posts[0];
   const router = useRouter();
   const [clicks, addClick] = useState(0);
+  const [edit, setEdit] = useState(0);
 
   if (!postData["_id"]) {
     return (
@@ -28,7 +29,7 @@ const Post = (props) => {
       </div>
       <div className = {styles.buttons}>
       <button className = {styles.delete} onClick={() => {
-        if(clicks == 2) {
+      if(clicks == 2) {
           addClick(0);
           deletePost(postData["_id"], router)
         }
@@ -48,21 +49,32 @@ const Post = (props) => {
        >Cancel</button>
         </div>} 
       
-      <button className = {styles.delete} onClick={() => {
-        let params = { query: { _id: postData["_id"] },
-          update: { title:'Another Title', body:'Body has been changed again' }};
-        updatePost(params, router);
-      }}>Edit Post</button>
+      <button className = {styles.delete} onClick={() => {setEdit(1);}}>Edit Post</button>
     </div>
-    </div>
-      <PostPage 
-        title ={postData.title}
-        body ={postData.body}
-        date ={postData.date}
-        image = {postData.image}
-        comments = {postData.comments}
-      />
-    </div>
+
+      {edit == 0 &&
+      <div>
+        <PostPage 
+          title ={postData.title}
+          body ={postData.body}
+          date ={postData.date}
+          image = {postData.image}
+          comments = {postData.comments}
+        />
+      </div>} 
+
+      {edit == 1 &&
+      <div>
+        <PostEditor
+          postId={postData._id}
+          postTitle={postData.title}
+          postImage={postData.image}
+          postBody={postData.body}
+          setEdit={setEdit}
+         />
+      </div>} 
+      </div>
+      </div>
   );
 };
 
