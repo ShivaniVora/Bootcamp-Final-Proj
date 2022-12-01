@@ -106,9 +106,6 @@ const Post = (props) => {
         <div>
           <PostEditor
             postId={postData._id}
-            postTitle={postData.title}
-            postImage={postData.image}
-            postBody={postData.body}
             setEdit={setEdit}
             setPostData = {setPostData}
             postData = {postData}

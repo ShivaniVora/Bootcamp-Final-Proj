@@ -9,7 +9,6 @@ const PostPage = (props) => {
   const body = props.body;
   const date = props.date;
   const image = props.image;
-  //const comments = props.comments;
   const postid = props.postid;
 
   const [comments, setComments] = useState(props.comments);

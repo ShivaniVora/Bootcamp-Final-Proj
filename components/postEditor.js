@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 function PostEditor(props) { 
 
-  const { postId, postTitle, postImage, postBody, setEdit, setPostData, postData } = props;
+  const { postId, setEdit, setPostData, postData } = props;
 
   const [prompt, setPrompt] = useState('');
   const [npTitle, setNPTitle] = useState(postData.title);
