@@ -235,7 +235,7 @@
 .createPost {
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   font-weight: bold;
   padding: 20px;
 }

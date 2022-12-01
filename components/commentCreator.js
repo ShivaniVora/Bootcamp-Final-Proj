@@ -49,9 +49,10 @@ function CommentCreator(props) {
     <div className={styles.makePostUI}>
       <form onSubmit={createComment}>
 
-        <h1>Add Comment</h1>
+        
 
         <div className={styles.createPost}>
+        <h1>Add Comment</h1>
           <div className={styles.textField} id='image'>
             <label>Title: </label>
             <input
