@@ -42,8 +42,8 @@ function PostEditor(props) {
     <div className={styles.makePostUI}>
       <form onSubmit={updatePost}>
 
-        <h1>Edit Post</h1>
-        <div style={{ display: 'flex', flexDirection : 'column', alignContent: 'centers' }}>
+        <h1 style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>Edit Post</h1>
+        <div style={{ display: 'flex', flexDirection : 'column', justifyContent: 'center' }}>
           <div className={styles.textField}>
             <label>Title: </label>
             <textarea
@@ -73,8 +73,10 @@ function PostEditor(props) {
               onChange={event => setNPBody(event.target.value)}
               >{npBody}</textarea>
           </div>
-          <button className={styles.addButton} type="submit">{"Post Content with Edits"}</button>
-          <button onClick={() => setEdit(0)}>Cancel</button>
+          <div className = {styles.buttons}>
+          <button className={styles.delete} type="submit">{"Post Content with Edits"}</button>
+          <button className = {styles.delete} onClick={() => setEdit(0)}>Cancel</button>
+          </div>
         </div>
         <h3>{prompt}</h3>
 
