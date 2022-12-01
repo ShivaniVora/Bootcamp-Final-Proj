@@ -5,8 +5,10 @@ function handler(req, res) {
 }
 
 async function getAllPosts(req, res) {
-  const posts = await findAllPosts();
-  res.status(200).json(posts);
+  const limit = JSON.parse(req.body)["limit"];
+  const skip = JSON.parse(req.body)["skip"];
+  const feed = await findAllPosts(skip, limit);
+  res.status(200).json(feed);
 }
 
 export default handler;

@@ -7,9 +7,9 @@ import dbConnect from "../dbConnect";
    to access the database.
 */
 
-async function findAllPosts() {
+async function findAllPosts(skip, limit) {
   await dbConnect();
-  return await Post.find({}).sort({date: 'desc'});
+  return await Post.find({}).sort({date: 'desc'}).skip(skip).limit(limit);
 }
 
 async function createPost(body) {

@@ -7,6 +7,7 @@ import styles from "../../styles/Home.module.css";
 import PostEditor from "../../components/postEditor";
 
 const Post = (props) => {
+  console.log(props);
   const { posts } = props;
   const postData = posts[0];
   const router = useRouter();
@@ -94,26 +95,7 @@ function deletePost(id, router) {
     });
 }
 
-
-function updatePost(params, router) {
-  fetch("/api/posts/update", {
-    method: "POST",
-    body: JSON.stringify(params),
-  })
-    .then((res) => res.json())
-    .then((data) => router.push('/posts/' + data["_id"]));
-}
-
-export async function getStaticPaths() {
-  const res = await fetch("http://localhost:3000/api/posts/feed");
-  const data = await res.json();
-  return {
-    paths: data.map((post) => ({ params: { id: post["_id"] } })),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { id } = context.params;
   const res = await fetch(`http://localhost:3000/api/posts/${id}`);
   const data = await res.json();
