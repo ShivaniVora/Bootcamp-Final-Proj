@@ -10,6 +10,7 @@ const PostPage = (props) => {
   const image = props.image;
   const comments = props.comments;
   const postid = props.postid;
+  console.log(image);
 
   const [visuals, setVisuals] = useState([]);
 
@@ -35,7 +36,7 @@ const PostPage = (props) => {
       <div className = {styles.post}>
         <h1>{title}</h1>
         <p>{body}</p>
-        <img src={image} alt="No Image"/>
+        {image !== undefined && <img src={image} alt="No Image"/>}
         <p>Date: {date} </p>
         <div className="Comments">
           <h2> comments </h2>
