@@ -1,5 +1,6 @@
 .container {
   padding: 0 2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .main {
@@ -10,11 +11,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;  
+  font-family:Arial, Helvetica, sans-serif
 }
 
 .row {
   display: flex;
   flex-direction: row;
+}
+.dateComment {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.postmargin {
+  display: flex;
+  min-width: 75%;
+  color: purple;
+  flex-wrap:wrap; 
 }
 
 .footer {
@@ -37,6 +54,7 @@
   align-items: center;
   background-color:aliceblue;
   padding: 20px;
+  width: 100%
 }
 
 .footer a {

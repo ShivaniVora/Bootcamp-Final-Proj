@@ -31,11 +31,17 @@ export default function Home(props) {
         <h1>Feed</h1>
         {
           feed.map((post)=> (
-            <div key={post["_id"]}>
-              <Link href={"/posts/" + post["_id"]}>
-                <h3>{post.title}</h3>
-              </Link>
-              <p>{post.body}</p>
+          <div classname = {styles.postmargin}>
+              <div key={post["_id"]}>
+                <Link href={"/posts/" + post["_id"]}>
+                  <h3>{post.title}</h3>
+                </Link>
+                <p>{post.body}</p>
+                <div className={styles.dateComment}>
+                <p>{post.comments.length} Comments </p>
+                <p>{post.date} </p>
+                </div>
+              </div>
             </div>
         ))}
         <div className={styles.row}>
