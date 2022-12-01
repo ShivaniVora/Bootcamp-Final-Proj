@@ -69,7 +69,8 @@
   justify-content: flex-start;
 }
 .post {
-  display: inline-flex;
+  display: inline-block;
+  text-align: center;
   flex-direction: column ;
   align-items: center;
   background-color: white;
