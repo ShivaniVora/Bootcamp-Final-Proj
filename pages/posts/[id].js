@@ -3,12 +3,14 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import PostPage from "../../components/postPage";
 import { useState } from "react";
+import PostEditor from "../../components/postEditor";
 
 const Post = (props) => {
   const { posts } = props;
   const postData = posts[0];
   const router = useRouter();
   const [clicks, addClick] = useState(0);
+  const [edit, setEdit] = useState(0);
 
   if (!postData["_id"]) {
     return (
@@ -20,13 +22,29 @@ const Post = (props) => {
   }
   return (
     <div>
-      <PostPage 
-        title ={postData.title}
-        body ={postData.body}
-        date ={postData.date}
-        image = {postData.image}
-        comments = {postData.comments}
-      />
+
+      {edit == 0 &&
+      <div>
+        <PostPage 
+          title ={postData.title}
+          body ={postData.body}
+          date ={postData.date}
+          image = {postData.image}
+          comments = {postData.comments}
+        />
+      </div>} 
+
+      {edit == 1 &&
+      <div>
+        <PostEditor
+          postId={postData._id}
+          postTitle={postData.title}
+          postImage={postData.image}
+          postBody={postData.body}
+          setEdit={setEdit}
+         />
+      </div>} 
+
       <Link href='/'><h3>Return Home</h3></Link>
       <button onClick={() => {
         if(clicks == 2) {
@@ -49,11 +67,7 @@ const Post = (props) => {
        >Cancel</button>
         </div>} 
       
-      <button onClick={() => {
-        let params = { query: { _id: postData["_id"] },
-          update: { title:'Another Title', body:'Body has been changed again' }};
-        updatePost(params, router);
-      }}>Edit Post</button>
+      <button onClick={() => {setEdit(1);}}>Edit Post</button>
     </div>
   );
 };
