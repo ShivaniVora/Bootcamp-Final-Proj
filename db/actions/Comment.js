@@ -1,7 +1,14 @@
 import Comment from "../models/Comment";
 import dbConnect from "../dbConnect";
 
-async function findCommentsByPost() {}
+async function findCommentsByPost(body) {
+  await dbConnect();
+  try {
+    return await Comment.find(body); //.sort({date: 'desc'});
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 async function createComment(body) {
   await dbConnect();
